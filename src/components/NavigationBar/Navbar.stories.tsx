@@ -5,12 +5,6 @@ import { Button } from "../Button/Button";
 import { IconBell, IconChat, IconHelp, IconInfo, IconSearch } from "./icons";
 import { Navbar, type NavbarVariant } from "./Navbar";
 
-const AVATAR =
-  "data:image/svg+xml," +
-  encodeURIComponent(
-    '<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64"><circle cx="32" cy="32" r="32" fill="%23d4e157"/><circle cx="32" cy="24" r="10" fill="%23111111"/><ellipse cx="32" cy="52" rx="16" ry="12" fill="%23111111"/></svg>',
-  );
-
 const PRODUCT =
   "data:image/svg+xml," +
   encodeURIComponent(
@@ -71,7 +65,6 @@ function withVariantDemo(args: NavbarArgs): NavbarArgs {
     case "user":
       return {
         ...args,
-        avatarSrc: args.avatarSrc ?? AVATAR,
         trailing: args.trailing ?? actionSecondary,
         centreIcon,
       };
@@ -170,8 +163,22 @@ const meta = {
       control: "text",
       if: { arg: "variant", eq: "search" },
     },
+    avatarType: {
+      name: "Avatar type",
+      control: "select",
+      options: [
+        "Female_Caucasian_40px",
+        "Female_Asian_40px",
+        "Female_AfricanAmerican_40px",
+        "Caucasian_40px",
+        "Male_AfricanAmerican_40px",
+        "Male_Asian_40px",
+        "ML_40px",
+      ],
+      if: { arg: "variant", eq: "user" },
+    },
     avatarSrc: {
-      name: "Avatar",
+      name: "Avatar src",
       control: "text",
       if: { arg: "variant", eq: "user" },
     },

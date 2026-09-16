@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { Avatar, type AvatarType } from "../Avatar/Avatar";
 import { Button } from "../Button/Button";
 import { Icon } from "../../foundation/icons";
 import { IconChevronLeft, IconSearch } from "./icons";
@@ -56,8 +57,11 @@ export interface NavbarProps {
   iconButton1?: ReactNode;
   iconButton2?: ReactNode;
   iconButton3?: ReactNode;
+  /** Photo URL for User variant Avatar (optional; presets used when omitted). */
   avatarSrc?: string;
   avatarAlt?: string;
+  /** Figma Avatar `Type` when User variant has no `avatarSrc`. */
+  avatarType?: AvatarType;
   leading?: ReactNode;
   trailing?: ReactNode;
   searchPlaceholder?: string;
@@ -87,6 +91,7 @@ export function Navbar({
   iconButton3,
   avatarSrc,
   avatarAlt = "",
+  avatarType = "Female_Caucasian_40px",
   leading,
   trailing,
   searchPlaceholder = "Type to search...",
@@ -161,7 +166,15 @@ export function Navbar({
           <div className={styles.left}>
             {back}
             {menu}
-            {avatarSrc && <img className={styles.avatar} src={avatarSrc} alt={avatarAlt} />}
+            {(layout === "user" || avatarSrc) && (
+              <Avatar
+                className={styles.avatar}
+                size="Large - 40"
+                type={avatarType}
+                src={avatarSrc}
+                alt={avatarAlt || "User"}
+              />
+            )}
             {leading}
             {alignStart && titleBlock}
           </div>
