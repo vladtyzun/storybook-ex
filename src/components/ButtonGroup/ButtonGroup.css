@@ -1,0 +1,61 @@
+/* ==========================================================
+   MLDS Button Group
+   Figma: SyfKKZyUM3cW4IunxIk8Bj?node-id=2486-118825
+   Wrapper for laying out 2+ related buttons.
+   ========================================================== */
+
+.mlds-button-group {
+  display: flex;
+  width: 100%;
+  max-width: 343px;
+  box-sizing: border-box;
+}
+
+.mlds-button-group__item {
+  display: flex;
+  min-width: 0;
+}
+
+/* Side by side — row, each item stretches equally */
+.mlds-button-group--side-by-side {
+  flex-direction: row;
+  gap: var(--spacing-8, 8px);
+  align-items: stretch;
+}
+.mlds-button-group--side-by-side .mlds-button-group__item {
+  flex: 1 0 0;
+}
+/* If the last item is icon-only, don't let it stretch */
+.mlds-button-group--side-by-side .mlds-button-group__item:last-child:has(.mlds-button--icon-only) {
+  flex: 0 0 auto;
+}
+.mlds-button-group--side-by-side .mlds-button-group__item > * {
+  width: 100%;
+}
+.mlds-button-group--side-by-side .mlds-button-group__item:last-child:has(.mlds-button--icon-only) > * {
+  width: auto;
+}
+
+/* Stacked — column, full-width buttons */
+.mlds-button-group--stacked {
+  flex-direction: column;
+  gap: var(--spacing-8, 8px);
+  align-items: stretch;
+}
+.mlds-button-group--stacked .mlds-button-group__item > * {
+  width: 100%;
+}
+
+/* Stack buttons group — row of StackButtons, each flex-grows */
+.mlds-button-group--stack-buttons {
+  flex-direction: row;
+  gap: var(--spacing-4, 4px);
+  align-items: flex-start;
+}
+.mlds-button-group--stack-buttons .mlds-button-group__item {
+  flex: 1 0 0;
+  justify-content: center;
+}
+.mlds-button-group--stack-buttons .mlds-button-group__item > * {
+  width: 100%;
+}

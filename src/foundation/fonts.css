@@ -1,0 +1,78 @@
+/* ==========================================================
+   Baton Turbo — MLDS 4.0 primary font family
+   ========================================================== */
+
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-Book.otf') format('opentype');
+  font-weight: 350;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-BookItalic.otf') format('opentype');
+  font-weight: 350;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-RegularItalic.otf') format('opentype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-MediumItalic.otf') format('opentype');
+  font-weight: 500;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-BoldItalic.otf') format('opentype');
+  font-weight: 700;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-Heavy.otf') format('opentype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Baton Turbo';
+  src: url('/fonts/BatonTurbo-HeavyItalic.otf') format('opentype');
+  font-weight: 900;
+  font-style: italic;
+  font-display: swap;
+}

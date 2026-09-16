@@ -1,0 +1,22 @@
+.device {
+  width: var(--story-screen-width, 375px);
+  height: calc(var(--spacing-80) * 9);
+  overflow: hidden;
+  background: var(--background-main-background-primary);
+  border: var(--border-1) solid var(--border-border-primary);
+  border-radius: var(--radius-3xl);
+}
+
+.scroll {
+  height: calc(var(--spacing-80) * 9);
+  overflow: auto;
+}
+
+.body {
+  min-height: 1200px;
+  padding: var(--spacing-16);
+  color: var(--content-typography-content-primary);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-medium);
+  line-height: var(--line-height-body-medium);
+}

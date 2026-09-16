@@ -1,0 +1,10 @@
+/* MLDS 4.0 Effects & Radius Tokens */
+:root {
+  /* Border Radius */
+  --radius-full: 360px;
+  --radius-lg: 32px;
+  --radius-md: 8px;
+
+  /* Effects */
+  --blur-medium: blur(20px);
+}

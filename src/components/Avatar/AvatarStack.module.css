@@ -1,0 +1,54 @@
+.root {
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+/* Figma Density=Standard → gap -8px */
+.densityStandard {
+  gap: var(--spacing--8);
+}
+
+/* Figma Density=Small → gap -12px */
+.densitySmall {
+  gap: var(--spacing--12);
+}
+
+.item {
+  position: relative;
+}
+
+.item:nth-child(1) {
+  z-index: 1;
+}
+
+.item:nth-child(2) {
+  z-index: 2;
+}
+
+.item:nth-child(3) {
+  z-index: 3;
+}
+
+/* Figma Indicator 3.0 Variation=Number, Color=Neutral */
+.indicator {
+  position: relative;
+  z-index: 4;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  align-self: stretch;
+  min-width: var(--spacing-24);
+  height: var(--spacing-24);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  box-sizing: border-box;
+  background: var(--background-accent-background-neutral);
+  color: var(--content-semantics-content-black);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-label-small);
+  font-weight: var(--weight-medium);
+  line-height: var(--line-height-label-small);
+  letter-spacing: var(--letter-spacing-label);
+  white-space: nowrap;
+}

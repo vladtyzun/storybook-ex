@@ -1,0 +1,72 @@
+.root {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-primary);
+  font-weight: var(--weight-regular);
+  letter-spacing: var(--letter-spacing-label);
+  white-space: nowrap;
+}
+
+.label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 var(--spacing-2);
+  min-width: 0;
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+.sizeSmall {
+  height: var(--spacing-20);
+  padding: var(--spacing-2);
+  gap: 0;
+  font-size: var(--font-size-body-small);
+  line-height: var(--line-height-body-small);
+}
+
+.sizeMedium {
+  height: var(--spacing-24);
+  padding: var(--spacing-2) var(--spacing-4);
+  gap: var(--spacing-2);
+  font-size: var(--font-size-body-medium);
+  line-height: var(--line-height-body-medium);
+}
+
+.sizeLarge {
+  height: calc(var(--spacing-24) + var(--spacing-4));
+  padding: var(--spacing-4);
+  gap: 0;
+  font-size: var(--font-size-body-large);
+  line-height: var(--line-height-body-large);
+}
+
+.colorSuccess {
+  background: var(--background-accent-background-positive);
+  color: var(--content-semantics-content-positive);
+}
+
+.colorNeutral {
+  background: var(--background-accent-background-neutral-transparent);
+  color: var(--content-typography-content-primary);
+}
+
+.colorError {
+  background: var(--background-accent-background-negative);
+  color: var(--content-semantics-content-negative);
+}
+
+.colorWarning {
+  background: var(--background-accent-background-warning);
+  color: var(--content-semantics-content-warning);
+}
+
+.colorStandardAlt {
+  background: var(--content-semantics-content-black);
+  color: var(--content-semantics-content-white);
+}

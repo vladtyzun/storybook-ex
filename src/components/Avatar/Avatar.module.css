@@ -1,0 +1,86 @@
+.root {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: var(--radius-full);
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.sizeLarge {
+  width: var(--spacing-40);
+  height: var(--spacing-40);
+}
+
+.sizeStandard {
+  width: var(--spacing-32);
+  height: var(--spacing-32);
+}
+
+.sizeSmall {
+  width: var(--spacing-24);
+  height: var(--spacing-24);
+}
+
+.sizeXSmall {
+  width: var(--spacing-20);
+  height: var(--spacing-20);
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  border-radius: var(--radius-full);
+  object-fit: cover;
+  display: block;
+}
+
+/* Figma Type=ML_40px — teal fill + Logomark SVG */
+.ml {
+  background: var(--background-main-background-success);
+}
+
+.sizeLarge.ml,
+.sizeStandard.ml {
+  padding: var(--spacing-2);
+}
+
+/* Figma Small/xSmall ML padding is 1px; no --spacing-1 token — use --border-1 (1px). */
+.sizeSmall.ml,
+.sizeXSmall.ml {
+  padding: var(--border-1);
+}
+
+.logomark {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.logomarkSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Figma Border ellipse: 2px outside stroke #FFFFFF.
+   No --border-2 token — use --spacing-2 (2px). */
+.border {
+  position: absolute;
+  inset: 0;
+  border-radius: var(--radius-full);
+  pointer-events: none;
+  box-shadow: 0 0 0 var(--spacing-2) var(--content-semantics-content-white);
+  background: var(--background-accent-background-neutral-transparent);
+  z-index: 1;
+}
+
+.showBorder .image,
+.showBorder .logomark {
+  position: relative;
+  z-index: 0;
+}

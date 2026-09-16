@@ -1,0 +1,40 @@
+.bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-20) var(--spacing-24) var(--spacing-16);
+  color: var(--content-typography-content-primary);
+}
+
+.time,
+.metrics {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  min-height: var(--spacing-24);
+}
+
+.time {
+  justify-content: flex-start;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-title-medium);
+  font-weight: var(--weight-medium);
+  line-height: var(--line-height-title-medium);
+  letter-spacing: var(--letter-spacing-title);
+}
+
+.island {
+  flex: 0 0 calc(var(--spacing-80) + var(--spacing-40));
+  height: var(--spacing-24);
+  border-radius: var(--radius-full);
+}
+
+.metrics {
+  justify-content: flex-end;
+  gap: var(--spacing-6);
+}
+
+.inverted {
+  background: var(--background-main-background-black);
+  color: var(--content-typography-content-primary-alt);
+}

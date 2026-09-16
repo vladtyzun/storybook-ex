@@ -1,0 +1,157 @@
+.container {
+  padding: 48px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+}
+
+.section h1 {
+  font-size: 32px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: #000;
+}
+
+.section > p {
+  font-size: 16px;
+  color: #666;
+  margin: 0 0 48px 0;
+}
+
+.heading {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 48px 0 24px 0;
+  color: #000;
+}
+
+.tableWrapper {
+  overflow-x: auto;
+  margin-bottom: 48px;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+}
+
+.table thead {
+  background: #f5f5f5;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table th {
+  padding: 16px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 14px;
+  color: #000;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.table td {
+  padding: 16px;
+  border-bottom: 1px solid #f0f0f0;
+  font-size: 14px;
+}
+
+.table tbody tr:hover {
+  background: #fafafa;
+}
+
+.nameCol {
+  width: 40%;
+}
+
+.valueCol {
+  width: 35%;
+}
+
+.previewCol {
+  width: 25%;
+}
+
+.nameCell {
+  color: #000;
+}
+
+.variable {
+  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+  font-size: 12px;
+  background: #f5f5f5;
+  padding: 6px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  color: #666;
+}
+
+.valueCell {
+  color: #666;
+}
+
+.code {
+  font-family: 'Monaco', 'Menlo', 'Courier New', monospace;
+  font-size: 13px;
+  color: #666;
+}
+
+.previewCell {
+  display: flex;
+  align-items: center;
+}
+
+.colorSwatch {
+  width: 48px;
+  height: 48px;
+  border-radius: 6px;
+  border: 1px solid #e0e0e0;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.colorSwatch:hover {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .container {
+    padding: 24px;
+  }
+
+  .table {
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 12px 8px;
+  }
+
+  .nameCol {
+    width: 50%;
+  }
+
+  .valueCol {
+    width: 30%;
+  }
+
+  .previewCol {
+    width: 20%;
+  }
+
+  .colorSwatch {
+    width: 40px;
+    height: 40px;
+  }
+
+  .variable {
+    font-size: 11px;
+    padding: 4px 6px;
+  }
+}

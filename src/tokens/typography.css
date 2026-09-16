@@ -1,0 +1,12 @@
+/* MLDS 4.0 Typography Tokens — Standard (default); aliases of foundation tokens.css */
+:root {
+  --font-family-primary: var(--font-family-font-name, "Baton Turbo"), sans-serif;
+
+  --font-weight-regular: var(--weight-regular, 400);
+  --font-weight-medium: var(--weight-medium, 500);
+
+  --letter-spacing-headline: -0.03em;
+  --letter-spacing-title: -0.03em;
+  --letter-spacing-body: -0.02em;
+  --letter-spacing-label: -0.01em;
+}

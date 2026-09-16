@@ -1,0 +1,240 @@
+/* ==========================================================
+   MLDS Button
+   Figma: SyfKKZyUM3cW4IunxIk8Bj?node-id=347-9225
+   Types: Primary (_Primary teal), Primary Alt (Primary black),
+   Secondary, Negative, Outline, Transparent, Media
+   States: Default, Hover, Focus, Active, Disabled, Loading
+   ========================================================== */
+
+.mlds-button {
+  /* Default overlays = dark tint (light surfaces). Alt types override. */
+  --_bg: var(--background-main-background-primary-alt);
+  --_fg: var(--content-typography-content-primary-alt);
+  --_border: transparent;
+  --_border-width: 0;
+  --_hover-overlay: var(--overlay-overlay-hover-state);
+  --_pressed-overlay: var(--overlay-overlay-pressed-state);
+  --_focus-ring: var(--border-border-focus);
+
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8);
+  padding: var(--spacing-12) var(--spacing-16);
+  border: var(--_border-width) solid var(--_border);
+  border-radius: var(--radius-full);
+  background: var(--_bg);
+  color: var(--_fg);
+  cursor: pointer;
+  user-select: none;
+  transition: box-shadow 120ms ease, transform 60ms ease;
+  font-family: var(--font-family-font-name, "Baton Turbo"), -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: var(--weight-medium);
+  font-size: var(--font-size-title-small);
+  line-height: var(--line-height-title-small);
+  letter-spacing: var(--letter-spacing-title);
+  white-space: nowrap;
+  box-sizing: border-box;
+}
+
+/* The overlay handles hover / pressed tint without changing the base bg. */
+.mlds-button::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 0;
+  background: transparent;
+  transition: background 120ms ease;
+}
+
+.mlds-button > * {
+  position: relative;
+  z-index: 1;
+}
+
+.mlds-button__label {
+  padding: 0 var(--spacing-8);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: inherit;
+}
+
+.mlds-button__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  color: inherit;
+}
+
+/* Icons must match label color for every type × state (incl. icon-only). */
+.mlds-button__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  color: inherit;
+}
+
+.mlds-button__icon svg [fill]:not([fill="none"]) {
+  fill: currentColor;
+}
+
+.mlds-button__icon svg [stroke]:not([stroke="none"]) {
+  stroke: currentColor;
+}
+
+/* ============ Sizes ============ */
+/* Figma Button gap (icon↔label): Large 8, Medium -4, Small 0 */
+.mlds-button--large {
+  height: 48px;
+  min-height: 48px;
+  gap: var(--spacing-8);
+}
+.mlds-button--large .mlds-button__icon {
+  width: 24px;
+  height: 24px;
+}
+
+.mlds-button--medium {
+  height: 36px;
+  min-height: 36px;
+  gap: var(--spacing--4);
+  padding: var(--spacing-6) var(--spacing-12);
+  font-size: var(--font-size-label-large);
+  line-height: var(--line-height-label-large);
+  letter-spacing: var(--letter-spacing-label);
+}
+.mlds-button--medium .mlds-button__label {
+  padding: 0 var(--spacing-4);
+}
+.mlds-button--medium .mlds-button__icon {
+  width: 20px;
+  height: 20px;
+}
+
+.mlds-button--small {
+  height: 30px;
+  min-height: 30px;
+  gap: var(--spacing-0);
+  padding: var(--spacing-4) var(--spacing-8);
+  font-size: var(--font-size-label-large);
+  line-height: var(--line-height-label-large);
+  letter-spacing: var(--letter-spacing-label);
+}
+.mlds-button--small .mlds-button__label {
+  padding: 0 var(--spacing-4);
+}
+.mlds-button--small .mlds-button__icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Icon-only collapses to a square pill */
+.mlds-button--icon-only {
+  gap: 0;
+  padding: var(--spacing-12);
+  aspect-ratio: 1 / 1;
+}
+.mlds-button--icon-only.mlds-button--medium { padding: var(--spacing-8); }
+.mlds-button--icon-only.mlds-button--small { padding: var(--spacing-6); }
+
+/* ============ Types ============ */
+/* Primary (Figma Type=_Primary): branded teal */
+.mlds-button--primary {
+  --_bg: var(--background-main-background-success);
+  --_fg: var(--content-typography-content-primary);
+  --_hover-overlay: var(--overlay-overlay-hover-state);
+  --_pressed-overlay: var(--overlay-overlay-pressed-state);
+}
+
+/* Primary ALT (Figma Type=Primary): solid black / white */
+.mlds-button--primary-alt {
+  --_bg: var(--background-main-background-primary-alt);
+  --_fg: var(--content-typography-content-primary-alt);
+  --_hover-overlay: var(--overlay-overlay-hover-alt-state);
+  --_pressed-overlay: var(--overlay-overlay-pressed-alt-state);
+}
+
+/* Secondary: subtle neutral fill */
+.mlds-button--secondary {
+  --_bg: var(--background-accent-background-neutral-transparent);
+  --_fg: var(--content-typography-content-primary);
+  --_hover-overlay: var(--overlay-overlay-hover-state);
+  --_pressed-overlay: var(--overlay-overlay-pressed-state);
+  backdrop-filter: blur(10px);
+}
+
+/* Negative: destructive */
+.mlds-button--negative {
+  --_bg: var(--background-main-background-negative);
+  --_fg: var(--content-semantics-content-white);
+  --_hover-overlay: var(--overlay-overlay-hover-alt-state);
+  --_pressed-overlay: var(--overlay-overlay-pressed-alt-state);
+}
+
+/* Outline: transparent bg + border — full state set in Figma */
+.mlds-button--outline {
+  --_bg: transparent;
+  --_fg: var(--content-typography-content-primary);
+  --_border: var(--border-border-inverted);
+  --_border-width: 1px;
+  --_hover-overlay: var(--overlay-overlay-hover-state);
+  --_pressed-overlay: var(--overlay-overlay-pressed-state);
+}
+
+/* Transparent: no chrome until interacted — full state set in Figma */
+.mlds-button--transparent {
+  --_bg: transparent;
+  --_fg: var(--content-typography-content-primary);
+  --_hover-overlay: var(--overlay-overlay-hover-state);
+  --_pressed-overlay: var(--overlay-overlay-pressed-state);
+}
+
+/* Media: sits over imagery with blur — hover/active darken (Figma 0.32→0.35→0.37) */
+.mlds-button--media {
+  --_bg: var(--background-accent-background-neutral-media);
+  --_fg: var(--content-semantics-content-white);
+  --_hover-overlay: var(--overlay-overlay-hover-state);
+  --_pressed-overlay: var(--overlay-overlay-pressed-state);
+  backdrop-filter: blur(20px);
+}
+
+/* ============ States ============
+   Real interaction uses pseudo-classes; the `state` prop
+   forces a look for demos via .mlds-button--state-*.
+   ============ */
+.mlds-button:hover:not([disabled]):not(.mlds-button--state-disabled):not(.mlds-button--state-loading)::before,
+.mlds-button--state-hover::before {
+  background: var(--_hover-overlay);
+}
+
+.mlds-button:active:not([disabled]):not(.mlds-button--state-disabled):not(.mlds-button--state-loading)::before,
+.mlds-button--state-active::before {
+  background: var(--_pressed-overlay);
+}
+
+.mlds-button:focus-visible,
+.mlds-button--state-focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--border-border-inherit),
+    0 0 0 4px var(--_focus-ring);
+}
+
+.mlds-button[disabled],
+.mlds-button--state-disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.mlds-button--state-loading {
+  cursor: progress;
+}
+.mlds-button__spinner {
+  color: inherit;
+}

@@ -1,0 +1,18 @@
+/* MLDS 4.0 Color Tokens */
+:root {
+  /* Content Typography */
+  --content-typography-primary: #000000;
+  --content-typography-secondary: rgba(0, 0, 0, 0.64);
+  --content-typography-tertiary: rgba(0, 0, 0, 0.48);
+  --content-typography-disabled: rgba(0, 0, 0, 0.32);
+
+  /* Semantic Colors */
+  --content-semantics-positive: #006657;
+  --content-semantics-negative: #ce293f;
+
+  /* Background Colors */
+  --background-accent-neutral-transparent: rgba(0, 0, 0, 0.06);
+
+  /* Borders */
+  --border-primary: rgba(0, 0, 0, 0.08);
+}

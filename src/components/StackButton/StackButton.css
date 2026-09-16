@@ -1,0 +1,121 @@
+/* ==========================================================
+   MLDS Stack Button
+   Figma: SyfKKZyUM3cW4IunxIk8Bj?node-id=40004255-14135
+   Icon + label stacked vertically, circle icon target.
+   ========================================================== */
+
+.mlds-stack-button {
+  --_circle-bg: var(--background-main-primary-alt, #000000);
+  --_circle-fg: var(--content-typography-primary-alt, #ffffff);
+  --_hover-overlay: var(--overlay-hover-alt-state, rgba(255, 255, 255, 0.08));
+  --_pressed-overlay: var(--overlay-pressed-alt-state, rgba(255, 255, 255, 0.16));
+  --_focus-ring: var(--border-primary, rgba(0, 0, 0, 0.32));
+
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-8, 8px);
+  min-width: 60px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  cursor: pointer;
+  font-family: var(--font-family-font-name, "Baton Turbo"), -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--content-typography-primary, #000000);
+  transition: opacity 120ms ease;
+}
+
+.mlds-stack-button__circle {
+  position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 56px;
+  height: 56px;
+  border-radius: var(--radius-full, 360px);
+  background: var(--_circle-bg);
+  color: var(--_circle-fg);
+  transition: box-shadow 120ms ease;
+  box-sizing: border-box;
+}
+
+.mlds-stack-button__circle::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: transparent;
+  pointer-events: none;
+  z-index: 0;
+  transition: background 120ms ease;
+}
+
+.mlds-stack-button__icon {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+}
+
+.mlds-stack-button__icon svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.mlds-stack-button__label {
+  font-weight: 400;
+  font-size: var(--font-size-body-medium, 14px);
+  line-height: var(--line-height-body-medium, 20px);
+  letter-spacing: -0.28px;
+  text-align: center;
+  color: var(--content-typography-primary, #000000);
+  min-width: 100%;
+}
+
+/* Types */
+.mlds-stack-button--primary {
+  --_circle-bg: var(--background-main-primary-alt, #000000);
+  --_circle-fg: var(--content-typography-primary-alt, #ffffff);
+  --_hover-overlay: var(--overlay-hover-alt-state, rgba(255, 255, 255, 0.08));
+  --_pressed-overlay: var(--overlay-pressed-alt-state, rgba(255, 255, 255, 0.16));
+}
+
+.mlds-stack-button--secondary {
+  --_circle-bg: var(--background-accent-neutral-transparent, rgba(0, 0, 0, 0.06));
+  --_circle-fg: var(--content-typography-primary, #000000);
+  --_hover-overlay: var(--overlay-hover-state, rgba(0, 0, 0, 0.04));
+  --_pressed-overlay: var(--overlay-pressed-state, rgba(0, 0, 0, 0.08));
+}
+
+/* States */
+.mlds-stack-button:hover .mlds-stack-button__circle::before,
+.mlds-stack-button--state-hover .mlds-stack-button__circle::before {
+  background: var(--_hover-overlay);
+}
+
+.mlds-stack-button:active .mlds-stack-button__circle::before,
+.mlds-stack-button--state-active .mlds-stack-button__circle::before {
+  background: var(--_pressed-overlay);
+}
+
+.mlds-stack-button:focus-visible .mlds-stack-button__circle,
+.mlds-stack-button--state-focus .mlds-stack-button__circle {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--border-inherit, #ffffff),
+    0 0 0 4px var(--_focus-ring);
+}
+
+.mlds-stack-button:focus-visible {
+  outline: none;
+}
+
+.mlds-stack-button[disabled],
+.mlds-stack-button--state-disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}

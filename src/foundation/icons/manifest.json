@@ -1,0 +1,240 @@
+{
+  "icons": [
+    {
+      "id": "2242:78523",
+      "name": "chevronLeft",
+      "section": "Navigation",
+      "file": "svg/chevronLeft.svg"
+    },
+    {
+      "id": "2242:78521",
+      "name": "chevronUp",
+      "section": "Navigation",
+      "file": "svg/chevronUp.svg"
+    },
+    {
+      "id": "2242:78520",
+      "name": "chevronRight",
+      "section": "Navigation",
+      "file": "svg/chevronRight.svg"
+    },
+    {
+      "id": "2242:78519",
+      "name": "chevronDown",
+      "section": "Navigation",
+      "file": "svg/chevronDown.svg"
+    },
+    {
+      "id": "2242:78522",
+      "name": "burger",
+      "section": "Navigation",
+      "file": "svg/burger.svg"
+    },
+    {
+      "id": "10203:3875",
+      "name": "burgerALT",
+      "section": "Navigation",
+      "file": "svg/burgerALT.svg"
+    },
+    {
+      "id": "2242:78524",
+      "name": "arrowRight",
+      "section": "Navigation",
+      "file": "svg/arrowRight.svg"
+    },
+    {
+      "id": "2242:78518",
+      "name": "arrowRightCircle",
+      "section": "Navigation",
+      "file": "svg/arrowRightCircle.svg"
+    },
+    {
+      "id": "2242:78517",
+      "name": "arrowUp",
+      "section": "Navigation",
+      "file": "svg/arrowUp.svg"
+    },
+    {
+      "id": "2242:78516",
+      "name": "arrowUpCircle",
+      "section": "Navigation",
+      "file": "svg/arrowUpCircle.svg"
+    },
+    {
+      "id": "2242:78515",
+      "name": "arrowLeft",
+      "section": "Navigation",
+      "file": "svg/arrowLeft.svg"
+    },
+    {
+      "id": "2242:78514",
+      "name": "arrowLeftCircle",
+      "section": "Navigation",
+      "file": "svg/arrowLeftCircle.svg"
+    },
+    {
+      "id": "2242:78513",
+      "name": "arrowDown",
+      "section": "Navigation",
+      "file": "svg/arrowDown.svg"
+    },
+    {
+      "id": "2242:78512",
+      "name": "arrowDownCircle",
+      "section": "Navigation",
+      "file": "svg/arrowDownCircle.svg"
+    },
+    {
+      "id": "2242:78525",
+      "name": "close",
+      "section": "Navigation",
+      "file": "svg/close.svg"
+    },
+    {
+      "id": "2242:78511",
+      "name": "closeCircle",
+      "section": "Navigation",
+      "file": "svg/closeCircle.svg"
+    },
+    {
+      "id": "2242:78510",
+      "name": "closeCircleFilled",
+      "section": "Navigation",
+      "file": "svg/closeCircleFilled.svg"
+    },
+    {
+      "id": "24444:12316",
+      "name": "ascending",
+      "section": "Navigation",
+      "file": "svg/ascending.svg"
+    },
+    {
+      "id": "24444:12531",
+      "name": "descending",
+      "section": "Navigation",
+      "file": "svg/descending.svg"
+    },
+    {
+      "id": "2242:78254",
+      "name": "radiobuttonUnchecked",
+      "section": "Controls",
+      "file": "svg/radiobuttonUnchecked.svg"
+    },
+    {
+      "id": "2242:78250",
+      "name": "checkboxChecked",
+      "section": "Controls",
+      "file": "svg/checkboxChecked.svg"
+    },
+    {
+      "id": "2242:78253",
+      "name": "checkboxUnchecked",
+      "section": "Controls",
+      "file": "svg/checkboxUnchecked.svg"
+    },
+    {
+      "id": "2242:78252",
+      "name": "radiobuttonChecked",
+      "section": "Controls",
+      "file": "svg/radiobuttonChecked.svg"
+    },
+    {
+      "id": "2242:78251",
+      "name": "check",
+      "section": "Controls",
+      "file": "svg/check.svg"
+    },
+    {
+      "id": "2242:78249",
+      "name": "checkCircleOutline",
+      "section": "Controls",
+      "file": "svg/checkCircleOutline.svg"
+    },
+    {
+      "id": "2242:78248",
+      "name": "checkCircle",
+      "section": "Controls",
+      "file": "svg/checkCircle.svg"
+    },
+    {
+      "id": "2242:78247",
+      "name": "checkboxIndeterminate",
+      "section": "Controls",
+      "file": "svg/checkboxIndeterminate.svg"
+    },
+    {
+      "id": "2242:75693",
+      "name": "starFilledStroke",
+      "section": "Controls",
+      "file": "svg/starFilledStroke.svg"
+    },
+    {
+      "id": "2242:75695",
+      "name": "starFilledFilled",
+      "section": "Controls",
+      "file": "svg/starFilledFilled.svg"
+    },
+    {
+      "id": "2242:75697",
+      "name": "starHalfFilled",
+      "section": "Controls",
+      "file": "svg/starHalfFilled.svg"
+    },
+    {
+      "id": "2242:75702",
+      "name": "starActiveFilled",
+      "section": "Controls",
+      "file": "svg/starActiveFilled.svg"
+    },
+    {
+      "id": "2242:75704",
+      "name": "starHalfStroke",
+      "section": "Controls",
+      "file": "svg/starHalfStroke.svg"
+    },
+    {
+      "id": "2242:75708",
+      "name": "starActiveStroke",
+      "section": "Controls",
+      "file": "svg/starActiveStroke.svg"
+    },
+    {
+      "id": "2242:75711",
+      "name": "DotFilledStroke",
+      "section": "Controls",
+      "file": "svg/DotFilledStroke.svg"
+    },
+    {
+      "id": "2242:75713",
+      "name": "DotFilledFilled",
+      "section": "Controls",
+      "file": "svg/DotFilledFilled.svg"
+    },
+    {
+      "id": "2242:75715",
+      "name": "DotHalfStroke",
+      "section": "Controls",
+      "file": "svg/DotHalfStroke.svg"
+    },
+    {
+      "id": "2242:75717",
+      "name": "DotHalfFilled",
+      "section": "Controls",
+      "file": "svg/DotHalfFilled.svg"
+    },
+    {
+      "id": "2242:75722",
+      "name": "DotActiveStroke",
+      "section": "Controls",
+      "file": "svg/DotActiveStroke.svg"
+    },
+    {
+      "id": "2242:75724",
+      "name": "DotActiveFilled",
+      "section": "Controls",
+      "file": "svg/DotActiveFilled.svg"
+    }
+  ],
+  "ok": 39,
+  "fail": 0
+}

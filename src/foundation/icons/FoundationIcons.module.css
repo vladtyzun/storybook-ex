@@ -1,0 +1,112 @@
+.preview {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 240px;
+  width: 100%;
+  color: var(--content-typography-content-primary);
+  background: var(--background-main-background-primary);
+}
+
+.container {
+  padding: var(--spacing-48);
+  max-width: 1200px;
+  margin: 0 auto;
+  font-family: 'Baton Turbo', sans-serif;
+  color: var(--content-typography-content-primary);
+  background: var(--background-main-background-primary);
+}
+
+.intro h1 {
+  margin: 0 0 var(--spacing-12);
+  font-size: var(--font-size-body-xl);
+  font-weight: 700;
+}
+
+.intro p {
+  margin: 0 0 var(--spacing-32);
+  font-size: var(--font-size-body-medium);
+  color: var(--content-typography-content-secondary);
+  line-height: 1.5;
+}
+
+.search {
+  display: block;
+  width: 100%;
+  max-width: 420px;
+  margin-bottom: var(--spacing-32);
+  padding: var(--spacing-12) var(--spacing-16);
+  border: 1px solid var(--content-typography-content-tertiary);
+  border-radius: var(--radius-sm);
+  background: var(--background-main-background-primary);
+  color: var(--content-typography-content-primary);
+  font-family: inherit;
+  font-size: var(--font-size-body-medium);
+}
+
+.search::placeholder {
+  color: var(--content-typography-content-tertiary);
+}
+
+.search:focus {
+  outline: 2px solid var(--content-typography-content-primary);
+  outline-offset: 2px;
+}
+
+.section {
+  margin-bottom: var(--spacing-48);
+}
+
+.heading {
+  margin: 0 0 var(--spacing-8);
+  font-size: var(--font-size-body-large);
+  font-weight: 600;
+}
+
+.count {
+  margin: 0 0 var(--spacing-20);
+  font-size: var(--font-size-body-small);
+  color: var(--content-typography-content-secondary);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: var(--spacing-16);
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-12);
+  padding: var(--spacing-16);
+  border-radius: var(--radius-md);
+  background: var(--background-main-background-tertiary);
+  color: var(--content-typography-content-primary);
+  min-height: 96px;
+  aspect-ratio: 1;
+}
+
+.glyph {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--spacing-32);
+  height: var(--spacing-32);
+}
+
+.label {
+  font-size: var(--font-size-body-small);
+  text-align: center;
+  word-break: break-word;
+  color: var(--content-typography-content-secondary);
+}
+
+.empty {
+  margin: var(--spacing-24) 0;
+  color: var(--content-typography-content-secondary);
+  font-size: var(--font-size-body-medium);
+}

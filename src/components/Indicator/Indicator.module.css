@@ -1,0 +1,55 @@
+.dot {
+  display: inline-block;
+  box-sizing: border-box;
+  width: var(--spacing-8);
+  height: var(--spacing-8);
+  border-radius: var(--radius-full);
+  flex-shrink: 0;
+}
+
+.number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  min-width: var(--spacing-20);
+  padding: var(--spacing-2) var(--spacing-4);
+  border-radius: var(--radius-full);
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-label-small);
+  font-weight: var(--weight-medium);
+  line-height: var(--line-height-label-small);
+  letter-spacing: var(--letter-spacing-label);
+  white-space: nowrap;
+}
+
+.withBorder {
+  box-shadow: 0 0 0 2px var(--content-semantics-content-white);
+}
+
+.colorStandard.dot,
+.colorStandard.number {
+  background: var(--content-semantics-content-negative);
+}
+
+.colorStandard.number {
+  color: var(--content-semantics-content-white);
+}
+
+.colorTeal.dot,
+.colorTeal.number {
+  background: var(--background-main-background-success);
+}
+
+.colorTeal.number {
+  color: var(--content-semantics-content-black);
+}
+
+.colorNeutral.dot,
+.colorNeutral.number {
+  background: var(--background-accent-background-neutral-transparent);
+}
+
+.colorNeutral.number {
+  color: var(--content-typography-content-primary);
+}

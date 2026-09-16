@@ -1,0 +1,236 @@
+.mlds-acc-item {
+  --mlds-leading-size: 40px;
+  --mlds-leading-gap: 12px;
+  /* Left inset that aligns content + divider with the title (icon + gap). */
+  --mlds-content-inset: calc(var(--mlds-leading-size) + var(--mlds-leading-gap));
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+  font-family: var(--font-family-font-name, "Baton Turbo"), -apple-system,
+    BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  color: var(--content-typography-primary, #000000);
+}
+
+.mlds-acc-item:not(.has-icon) {
+  --mlds-content-inset: 0px;
+}
+
+.mlds-acc-item *,
+.mlds-acc-item *::before,
+.mlds-acc-item *::after {
+  box-sizing: border-box;
+}
+
+/* ---- Header ---- */
+.mlds-acc-item__header {
+  display: flex;
+  align-items: center;
+  gap: var(--mlds-leading-gap);
+  width: 100%;
+  padding: 0;
+  background: none;
+  border: none;
+  text-align: left;
+  font-family: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.mlds-acc-item__header--static {
+  cursor: default;
+}
+
+.mlds-acc-item.is-disabled .mlds-acc-item__header--static {
+  cursor: not-allowed;
+}
+
+.mlds-acc-item__header:focus-visible {
+  outline: 2px solid #4c8dff;
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+/* Leading icon: 40x40 box, glyph centered, vertically centered with the title row. */
+.mlds-acc-item__leading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: var(--mlds-leading-size);
+  height: var(--mlds-leading-size);
+  color: var(--content-typography-primary, #000000);
+}
+
+.mlds-acc-item__leading svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+.mlds-acc-item__container {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.mlds-acc-item__title-row {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-16, 16px);
+  width: 100%;
+  padding: var(--spacing-16, 16px) 0;
+}
+
+.mlds-acc-item__title-subtext {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.mlds-acc-item__title-line {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-8, 8px);
+  width: 100%;
+}
+
+.mlds-acc-item__title {
+  flex: 1 1 0;
+  min-width: 0;
+  font-size: var(--font-size-body-large, 16px);
+  line-height: var(--line-height-body-large, 24px);
+  letter-spacing: -0.32px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.mlds-acc-item__info {
+  display: flex;
+  flex-shrink: 0;
+  width: 24px;
+  height: 24px;
+  color: var(--content-typography-tertiary, rgba(0, 0, 0, 0.48));
+}
+
+.mlds-acc-item__subtext {
+  width: 100%;
+  margin-top: 2px;
+  font-size: var(--font-size-body-medium, 14px);
+  line-height: var(--line-height-body-medium, 20px);
+  letter-spacing: -0.28px;
+  color: var(--content-typography-secondary, rgba(0, 0, 0, 0.64));
+}
+
+.mlds-acc-item__append {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+/* ---- Disabled ---- */
+.mlds-acc-item.is-disabled .mlds-acc-item__title,
+.mlds-acc-item.is-disabled .mlds-acc-item__subtext {
+  color: var(--content-typography-_disabled, rgba(0, 0, 0, 0.32));
+}
+
+.mlds-acc-item.is-disabled .mlds-acc-item__leading {
+  opacity: 0.4;
+}
+
+/* Disabled rows dim their expanded content too (per Figma). */
+.mlds-acc-item.is-disabled .mlds-acc-item__content {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+/* ---- Expanded content ---- */
+.mlds-acc-item__panel {
+  display: grid;
+  grid-template-rows: 1fr;
+}
+
+.mlds-acc-item__panel-inner {
+  overflow: hidden;
+}
+
+.mlds-acc-item__content {
+  /* Align content with the title (past the leading icon). */
+  padding: 0 0 var(--spacing-16, 16px) var(--mlds-content-inset);
+}
+
+.mlds-acc-item__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px;
+  width: 100%;
+  background: var(--background-accent-neutral-transparent, rgba(0, 0, 0, 0.06));
+  border-radius: var(--radius-sm, 8px);
+  font-size: var(--font-size-label-medium, 12px);
+  line-height: var(--line-height-label-medium, 18px);
+  letter-spacing: -0.12px;
+  font-weight: 500;
+  color: var(--content-typography-tertiary, rgba(0, 0, 0, 0.48));
+}
+
+/* ---- Divider: bottom of the item, so it sits UNDER the content when open ---- */
+.mlds-acc-item__divider {
+  height: 1px;
+  margin-left: var(--mlds-content-inset);
+  background: var(--border-primary, rgba(0, 0, 0, 0.08));
+}
+
+/* ---- Skeleton ---- */
+.mlds-acc-item__skeleton-circle {
+  display: block;
+  width: var(--mlds-leading-size);
+  height: var(--mlds-leading-size);
+  border-radius: 50%;
+}
+
+.mlds-acc-item__skeleton-bar {
+  height: 24px;
+  border-radius: var(--radius-sm, 8px);
+}
+
+.mlds-acc-item__skeleton-bar--title {
+  flex: 1 1 0;
+}
+
+.mlds-acc-item__skeleton-bar--append {
+  width: 56px;
+  flex-shrink: 0;
+}
+
+.mlds-acc-item__skeleton-content {
+  width: 100%;
+  height: 72px;
+  border-radius: var(--radius-sm, 8px);
+}
+
+.mlds-skeleton {
+  background: linear-gradient(90deg, #eeeeee 25%, #e2e2e2 37%, #eeeeee 63%);
+  background-size: 400% 100%;
+  animation: mlds-shimmer 1.4s ease infinite;
+}
+
+@keyframes mlds-shimmer {
+  0% {
+    background-position: 100% 0;
+  }
+  100% {
+    background-position: -100% 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mlds-rext--icon,
+  .mlds-skeleton {
+    transition: none;
+    animation: none;
+  }
+}

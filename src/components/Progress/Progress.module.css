@@ -1,0 +1,85 @@
+.root {
+  display: flex;
+  width: 100%;
+  height: var(--spacing-4);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+  background: var(--background-accent-background-neutral-transparent);
+}
+
+.fill {
+  display: block;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--content-typography-content-primary);
+}
+
+.determinate .fill {
+  min-width: 0;
+}
+
+.indeterminate {
+  position: relative;
+}
+
+.indeterminate .fill {
+  position: absolute;
+  inset: 0 auto 0 25%;
+  width: 40%;
+  animation: progress-slide 1.2s ease-in-out infinite;
+}
+
+.bufferTrack {
+  position: relative;
+  background: transparent;
+}
+
+.bufferTrack .track,
+.bufferTrack .bufferFill,
+.bufferTrack .fill {
+  position: absolute;
+  inset: 0 auto 0 0;
+  height: 100%;
+  border-radius: var(--radius-full);
+}
+
+.bufferTrack .track {
+  width: 100%;
+  background: var(--background-accent-background-neutral-transparent);
+}
+
+.bufferTrack .bufferFill {
+  background: var(--background-accent-background-neutral);
+  opacity: 0.5;
+}
+
+.steps {
+  gap: var(--spacing-4);
+  background: transparent;
+  overflow: visible;
+}
+
+.step {
+  flex: 1;
+  height: 100%;
+  border-radius: var(--radius-full);
+  background: var(--background-accent-background-neutral-transparent);
+}
+
+.stepDone {
+  background: var(--content-typography-content-primary);
+}
+
+.stepCurrent {
+  background: var(--background-main-background-primary);
+  box-shadow: inset 0 0 0 1px var(--content-typography-content-primary);
+}
+
+@keyframes progress-slide {
+  0% {
+    left: -40%;
+  }
+  100% {
+    left: 100%;
+  }
+}

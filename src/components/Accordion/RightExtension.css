@@ -1,0 +1,80 @@
+.mlds-rext {
+  flex-shrink: 0;
+}
+
+/* ---- Icon (chevron) ---- */
+.mlds-rext--icon {
+  display: inline-flex;
+  width: 24px;
+  height: 24px;
+  color: var(--content-typography-primary, #000000);
+  transition: transform 0.2s ease;
+}
+
+.mlds-rext--icon.is-open {
+  transform: rotate(180deg);
+}
+
+.mlds-rext--icon.is-disabled {
+  opacity: 0.4;
+}
+
+/* ---- Button (pill) ---- */
+.mlds-rext--button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-0, 0px);
+  max-height: 30px;
+  padding: var(--spacing-6, 6px) var(--spacing-8, 8px);
+  border-radius: var(--radius-full, 360px);
+  background: var(--background-accent-neutral-transparent, rgba(0, 0, 0, 0.06));
+  backdrop-filter: blur(10px);
+  cursor: pointer;
+  user-select: none;
+}
+
+.mlds-rext--button:focus-visible {
+  outline: 2px solid #4c8dff;
+  outline-offset: 2px;
+}
+
+.mlds-rext__button-label {
+  padding: 0 var(--spacing-4, 4px);
+  font-size: var(--font-size-label-large, 14px);
+  line-height: var(--line-height-label-large, 20px);
+  letter-spacing: -0.14px;
+  color: var(--content-typography-primary, #000000);
+  white-space: nowrap;
+}
+
+.mlds-rext__button-icon {
+  display: inline-flex;
+  width: 20px;
+  height: 20px;
+  color: var(--content-typography-primary, #000000);
+}
+
+.mlds-rext--button.is-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---- Badge ---- */
+.mlds-rext--badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--spacing-2, 2px) var(--spacing-4, 4px);
+  border-radius: var(--radius-xs, 6px);
+  background: var(--background-accent-positive, #e1fefa);
+  color: var(--content-semantics-positive, #008f7a);
+  font-size: var(--font-size-label-medium, 12px);
+  line-height: var(--line-height-label-medium, 18px);
+  letter-spacing: -0.12px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.mlds-rext--badge.is-disabled {
+  opacity: 0.5;
+}
