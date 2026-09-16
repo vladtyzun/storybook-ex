@@ -1,0 +1,38 @@
+---
+alwaysApply: true
+---
+
+# Stories must render clean — no hook errors, always verified
+
+Never report a Storybook task done without loading the affected **Docs page AND story** in a browser and confirming there is no error overlay and no console errors.
+
+## Hooks rule (this error has recurred — do not repeat it)
+
+`Storybook preview hooks can only be called inside decorators and story functions.`
+
+Cause: calling React hooks (`useState`, `useEffect`, `useRef`, `useMemo`, `useCallback`, `useReducer`) directly inside a story `render` function, a custom Docs page, or a tabbed-Controls helper.
+
+Fix, in priority order:
+
+1. Extract stateful UI into a real React component at **module scope**, then `render: (args) => <Demo {...args} />`.
+2. If a hook must run in story/decorator scope, import it from `storybook/preview-api` — never from `react`.
+
+```tsx
+// ❌ BAD — hook inside render
+render: (args) => { const [v, setV] = useState(0); return <X value={v} /> }
+
+// ✅ GOOD — component at module scope
+const Demo = (args: Props) => { const [v, setV] = useState(0); return <X value={v} /> };
+render: (args) => <Demo {...args} />
+```
+
+## Mandatory verification loop after ANY story/component change
+
+1. Grep changed story files for `from 'react'` hook imports used inside `render`.
+2. Open each affected **Docs** page and **Playground** story in the browser.
+3. `read_console_messages` — zero errors.
+4. Toggle every Control that gates rendering (type/variant/counts) and confirm the preview updates.
+5. `run-story-tests` for the affected stories.
+6. Only then report completion.
+
+❌ Never say "done" based on file edits alone.

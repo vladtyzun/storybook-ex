@@ -1,19 +1,7 @@
 import type { Meta, StoryObj } from "@storybook/react-vite";
 import type { ComponentProps } from "react";
-import { useState } from "react";
-import {
-  Controls,
-  Description,
-  Primary,
-  Stories,
-  Subtitle,
-  Title,
-} from "@storybook/addon-docs/blocks";
 import { expect, fn, userEvent } from "storybook/test";
 import { Button } from "../Button/Button";
-import { ButtonGroup } from "../ButtonGroup/ButtonGroup";
-import { Icon } from "../../foundation/icons";
-import { StackButton } from "../StackButton/StackButton";
 import { FullHeader, type FullHeaderType } from "./FullHeader";
 import { IconBell, IconChat, IconHelp, IconInfo, IconSearch } from "./icons";
 
@@ -38,132 +26,11 @@ const utilityTrail = (
   </>
 );
 
-const mloneChildren = (
-  <ButtonGroup layout="stack-buttons">
-    <StackButton type="primary" icon={<Icon name="arrowUp" />}>
-      Share
-    </StackButton>
-    <StackButton type="secondary" icon={<Icon name="arrowUp" />}>
-      Label
-    </StackButton>
-  </ButtonGroup>
-);
 
 const tabs = [
   { id: "1st", label: "1st" },
   { id: "2nd", label: "2nd" },
 ];
-
-const FULL_HEADER_KEYS = [
-  "type",
-  "showPageTitle",
-  "showProgress",
-  "showTabs",
-  "showStatusBar",
-  "scrolled",
-  "progress",
-  "progressType",
-  "activeTab",
-] as const;
-
-const NAVBAR_KEYS = [
-  "navbarVariant",
-  "showLeftIcon",
-  "showNavbarTitle",
-  "title",
-  "showSubtitle",
-  "subtitle",
-  "showCentreIcon",
-  "showMenu",
-  "showIconButton2",
-  "showIconButton3",
-  "avatarType",
-  "avatarSrc",
-  "searchPlaceholder",
-] as const;
-
-const PAGE_TITLE_KEYS = [
-  "pageTitleVariant",
-  "subtext",
-  "showSubtext",
-  "showTitleBadge",
-  "value",
-  "index",
-  "indexLabel",
-  "status",
-  "showIndex",
-  "showProductImage",
-  "showInfo",
-  "showProductTitle",
-  "showEye",
-  "showBadge",
-  "showIndexInfo",
-] as const;
-
-type DocsTab = "Full Header" | "Navbar" | "Page Title";
-
-function TabbedDocsControls() {
-  const [tab, setTab] = useState<DocsTab>("Full Header");
-  const include =
-    tab === "Full Header"
-      ? [...FULL_HEADER_KEYS]
-      : tab === "Navbar"
-        ? [...NAVBAR_KEYS]
-        : [...PAGE_TITLE_KEYS];
-
-  return (
-    <div style={{ marginTop: 24 }}>
-      <div
-        role="tablist"
-        aria-label="Control groups"
-        style={{
-          display: "flex",
-          gap: 8,
-          marginBottom: 16,
-          borderBottom: "1px solid var(--border-border-primary, #e5e5e5)",
-          paddingBottom: 8,
-        }}
-      >
-        {(["Full Header", "Navbar", "Page Title"] as DocsTab[]).map((name) => (
-          <button
-            key={name}
-            type="button"
-            role="tab"
-            aria-selected={tab === name}
-            onClick={() => setTab(name)}
-            style={{
-              appearance: "none",
-              border: 0,
-              background: tab === name ? "var(--background-main-background-tertiary, #f5f5f5)" : "transparent",
-              color: "inherit",
-              font: "inherit",
-              fontWeight: 600,
-              padding: "8px 12px",
-              borderRadius: 8,
-              cursor: "pointer",
-            }}
-          >
-            {name}
-          </button>
-        ))}
-      </div>
-      <Controls include={include} />
-    </div>
-  );
-}
-
-function FullHeaderDocsPage() {
-  return (
-    <>
-      <Title />
-      <Subtitle />
-      <Description />
-      <Primary />
-      <TabbedDocsControls />
-      <Stories />
-    </>
-  );
-}
 
 type FullHeaderArgs = ComponentProps<typeof FullHeader>;
 
@@ -197,32 +64,17 @@ function withTypeDemo(args: FullHeaderArgs): FullHeaderArgs {
         status: args.status ?? "Updated 1 min ago",
         trailing: fromDefaultPlayground ? utilityTrail : args.trailing,
       };
-    case "mlone":
-      return {
-        ...base,
-        title: fromDefaultPlayground && args.title === "Discover" ? "ML One" : args.title,
-        showPageTitle: fromDefaultPlayground ? true : args.showPageTitle,
-        showLeftIcon: fromDefaultPlayground ? true : args.showLeftIcon,
-        showNavbarTitle: fromDefaultPlayground ? false : args.showNavbarTitle,
-        showProductTitle: args.showProductTitle,
-        showIndex: args.showIndex,
-        navbarVariant: fromDefaultPlayground
-          ? args.navbarVariant === "main"
-            ? "icon"
-            : args.navbarVariant
-          : args.navbarVariant,
-        pageTitleVariant: args.pageTitleVariant ?? "product",
-        value: args.value ?? "$8,393",
-        indexLabel: args.indexLabel ?? "Cash balance",
-        trailing: fromDefaultPlayground ? null : args.trailing,
-        children: args.children ?? (fromDefaultPlayground ? mloneChildren : undefined),
-      };
     default:
       return base;
   }
 }
 
 const cat = (category: string) => ({ table: { category } });
+
+/** Module-scope render — no hooks. */
+function FullHeaderDemo(args: FullHeaderArgs) {
+  return <FullHeader {...withTypeDemo(args)} />;
+}
 
 const meta = {
   title: "Design System/Navigation bar/FullHeader",
@@ -231,13 +83,13 @@ const meta = {
   args: {
     title: "Discover",
     type: "default",
-    scrolled: false,
     showLeftIcon: false,
     showStatusBar: true,
     showProgress: false,
     showPageTitle: false,
     showTabs: false,
     showSubtext: true,
+    subtext: "Description copy (optional)",
     showTitleBadge: false,
     showIndex: false,
     showProductImage: false,
@@ -247,9 +99,15 @@ const meta = {
     showBadge: false,
     showIndexInfo: false,
     showNavbarTitle: true,
+    showSubtitle: false,
+    showCentreIcon: false,
+    showMenu: false,
+    showIconButton2: true,
+    showIconButton3: true,
     navbarVariant: "main",
     pageTitleVariant: "default",
-    avatarType: "Female_Caucasian_40px",
+    searchPlaceholder: "Type to search...",
+    searchState: "default",
     onBack: fn(),
     onInfo: fn(),
     onEye: fn(),
@@ -257,11 +115,12 @@ const meta = {
     trailing: discoverTrail,
   },
   argTypes: {
-    // —— Full Header (Figma top level) ——
+    // —— Full Header 4.0 ——
     type: {
       name: "Type",
       control: "select",
-      options: ["default", "product", "mlone"],
+      options: ["default", "product"],
+      labels: { default: "Default", product: "Product" },
       description: "Figma Full Header `Type`",
       ...cat("Full Header"),
     },
@@ -283,35 +142,22 @@ const meta = {
       description: "Figma `Show Tabs`",
       ...cat("Full Header"),
     },
-    showStatusBar: {
-      name: "Show Status Bar",
-      control: "boolean",
-      ...cat("Full Header"),
-    },
-    scrolled: { control: "boolean", ...cat("Full Header") },
-    progress: {
-      control: { type: "range", min: 0, max: 1, step: 0.05 },
-      if: { arg: "showProgress", truthy: true },
-      ...cat("Full Header"),
-    },
-    progressType: {
-      name: "Progress type",
-      control: "select",
-      options: ["determinate", "indeterminate", "buffer", "steps"],
-      if: { arg: "showProgress", truthy: true },
-      ...cat("Full Header"),
-    },
-    activeTab: {
-      control: "text",
-      if: { arg: "showTabs", truthy: true },
-      ...cat("Full Header"),
-    },
 
-    // —— Nested Navigation Bar ——
+    // —— Nested Navigation Bar 4.0 ——
     navbarVariant: {
       name: "Types",
       control: "select",
       options: ["title", "icon", "button", "link", "main", "user", "search", "media"],
+      labels: {
+        title: "Title only",
+        icon: "Icon",
+        button: "Button",
+        link: "Link",
+        main: "Main Page",
+        user: "User",
+        search: "Search",
+        media: "Media",
+      },
       description: "Nested Navigation Bar `Types`",
       ...cat("Navbar"),
     },
@@ -321,178 +167,145 @@ const meta = {
       description: "Nested Navbar `Show left-icon`",
       ...cat("Navbar"),
     },
+    showMenu: {
+      name: "Show Menu",
+      control: "boolean",
+      description: "Nested Navbar `Show Menu`",
+      ...cat("Navbar"),
+    },
     showNavbarTitle: {
       name: "Show Title",
       control: "boolean",
       description: "Nested Navbar `Show Title`",
-      if: { arg: "navbarVariant", neq: "search" },
       ...cat("Navbar"),
     },
     title: {
       name: "Title",
       control: "text",
-      description: "Shared title (Navbar + Page Title)",
-      ...cat("Navbar"),
-    },
-    showSubtitle: {
-      name: "Show Subtitle",
-      control: "boolean",
-      if: { arg: "navbarVariant", eq: "title" },
-      ...cat("Navbar"),
-    },
-    subtitle: {
-      name: "Subtitle",
-      control: "text",
-      if: { arg: "navbarVariant", eq: "title" },
+      description: "Figma Navbar `Title` / Page Title `Title`",
       ...cat("Navbar"),
     },
     showCentreIcon: {
       name: "Centre icon",
       control: "boolean",
-      if: { arg: "navbarVariant", eq: "title" },
+      description: "Nested Navbar ` Centre icon`",
       ...cat("Navbar"),
     },
-    showMenu: {
-      name: "Show Menu",
+    showSubtitle: {
+      name: "Show Subtitle",
       control: "boolean",
-      if: { arg: "navbarVariant", eq: "main" },
+      description: "Nested Navbar `Show Subtitle`",
+      ...cat("Navbar"),
+    },
+    subtitle: {
+      name: "Subtitle",
+      control: "text",
+      description: "Nested Navbar `Subtitle`",
       ...cat("Navbar"),
     },
     showIconButton2: {
       name: "Icon Button 2",
       control: "boolean",
-      if: { arg: "navbarVariant", eq: "icon" },
+      description: "Nested Navbar `Icon Button 2`",
       ...cat("Navbar"),
     },
     showIconButton3: {
       name: "Icon Button 3",
       control: "boolean",
-      if: { arg: "navbarVariant", eq: "icon" },
+      description: "Nested Navbar `Icon Button 3`",
       ...cat("Navbar"),
     },
-    avatarType: {
-      name: "Avatar type",
+    searchState: {
+      name: "State",
       control: "select",
-      options: [
-        "Female_Caucasian_40px",
-        "Female_Asian_40px",
-        "Female_AfricanAmerican_40px",
-        "Caucasian_40px",
-        "Male_AfricanAmerican_40px",
-        "Male_Asian_40px",
-        "ML_40px",
-      ],
-      if: { arg: "navbarVariant", eq: "user" },
-      ...cat("Navbar"),
-    },
-    avatarSrc: {
-      name: "Avatar src",
-      control: "text",
-      if: { arg: "navbarVariant", eq: "user" },
+      options: ["default", "active", "typing", "labels"],
+      labels: { default: "Default", active: "Active", typing: "Typing", labels: "Labels" },
+      description: "Nested Search Field `State`",
       ...cat("Navbar"),
     },
     searchPlaceholder: {
-      name: "Search placeholder",
+      name: "Placeholder",
       control: "text",
-      if: { arg: "navbarVariant", eq: "search" },
+      description: "Nested Search Field `Placeholder`",
       ...cat("Navbar"),
     },
 
-    // —— Nested Page Title ——
+    // —— Nested Page Title 4.0 ——
     pageTitleVariant: {
       name: "Type",
       control: "select",
       options: ["default", "product"],
+      labels: { default: "Default", product: "Product" },
       description: "Nested Page Title `Type`",
-      if: { arg: "showPageTitle", truthy: true },
       ...cat("Page Title"),
     },
     subtext: {
       name: "Subtext",
       control: "text",
-      if: { arg: "pageTitleVariant", eq: "default" },
+      description: "Figma Page Title `Subtext`",
       ...cat("Page Title"),
     },
     showSubtext: {
       name: "Show subtext",
       control: "boolean",
-      if: { arg: "pageTitleVariant", eq: "default" },
+      description: "Figma Page Title `Show subtext`",
       ...cat("Page Title"),
     },
     showTitleBadge: {
       name: "Show Title Badge",
       control: "boolean",
-      if: { arg: "showPageTitle", truthy: true },
-      ...cat("Page Title"),
-    },
-    value: {
-      name: "Value",
-      control: "text",
-      if: { arg: "pageTitleVariant", eq: "product" },
-      ...cat("Page Title"),
-    },
-    index: {
-      name: "Index",
-      control: "text",
-      if: { arg: "pageTitleVariant", eq: "product" },
-      ...cat("Page Title"),
-    },
-    indexLabel: {
-      name: "Index label",
-      control: "text",
-      if: { arg: "pageTitleVariant", eq: "product" },
-      ...cat("Page Title"),
-    },
-    status: {
-      name: "Status",
-      control: "text",
-      if: { arg: "pageTitleVariant", eq: "product" },
+      description: "Figma Page Title `Show Title Badge`",
       ...cat("Page Title"),
     },
     showIndex: {
       name: "Show Index",
       control: "boolean",
-      if: { arg: "pageTitleVariant", eq: "product" },
+      description: "Figma Page Title `Show Index`",
       ...cat("Page Title"),
     },
     showProductImage: {
       name: "Show Product image",
       control: "boolean",
-      if: { arg: "pageTitleVariant", eq: "product" },
+      description: "Figma Page Title `Show Product image`",
       ...cat("Page Title"),
     },
     showInfo: {
       name: "Show info",
       control: "boolean",
-      if: { arg: "pageTitleVariant", eq: "product" },
+      description: "Figma Page Title `Show info`",
       ...cat("Page Title"),
     },
     showProductTitle: {
       name: "Show Product Title",
       control: "boolean",
-      if: { arg: "pageTitleVariant", eq: "product" },
+      description: "Figma Page Title `Show Product Title`",
       ...cat("Page Title"),
     },
     showEye: {
       name: "Show eye",
       control: "boolean",
-      if: { arg: "pageTitleVariant", eq: "product" },
+      description: "Figma Page Title `Show eye`",
       ...cat("Page Title"),
     },
     showBadge: {
       name: "Show Badge",
       control: "boolean",
-      if: { arg: "pageTitleVariant", eq: "product" },
+      description: "Figma Page Title `Show Badge`",
       ...cat("Page Title"),
     },
     showIndexInfo: {
       name: "Show Index info",
       control: "boolean",
-      if: { arg: "pageTitleVariant", eq: "product" },
+      description: "Figma Page Title `Show Index info`",
       ...cat("Page Title"),
     },
 
-    // —— Hidden / non-Figma junk ——
+    // —— Non-Figma / internal — hidden ——
+    showStatusBar: { table: { disable: true } },
+    scrolled: { table: { disable: true } },
+    progress: { table: { disable: true } },
+    progressType: { table: { disable: true } },
+    activeTab: { table: { disable: true } },
     titleMode: { table: { disable: true } },
     hero: { control: false, table: { disable: true } },
     trailing: { control: false, table: { disable: true } },
@@ -505,6 +318,8 @@ const meta = {
     iconButton1: { control: false, table: { disable: true } },
     iconButton2: { control: false, table: { disable: true } },
     iconButton3: { control: false, table: { disable: true } },
+    mediaButton1: { control: false, table: { disable: true } },
+    mediaButton2: { control: false, table: { disable: true } },
     onBack: { control: false, table: { disable: true } },
     onMenu: { control: false, table: { disable: true } },
     onTabChange: { control: false, table: { disable: true } },
@@ -517,20 +332,26 @@ const meta = {
     productTitle: { table: { disable: true } },
     titleBadge: { table: { disable: true } },
     badge: { table: { disable: true } },
-    className: { table: { disable: true } },
+    value: { table: { disable: true } },
+    index: { table: { disable: true } },
+    indexLabel: { table: { disable: true } },
+    status: { table: { disable: true } },
+    avatarType: { table: { disable: true } },
+    avatarSrc: { table: { disable: true } },
     avatarAlt: { table: { disable: true } },
+    searchText: { table: { disable: true } },
+    className: { table: { disable: true } },
   },
   parameters: {
     layout: "centered",
     previewWidth: "full",
     controls: { sort: "none" },
-    docs: { page: FullHeaderDocsPage },
     design: {
       type: "figma",
       url: "https://www.figma.com/design/SyfKKZyUM3cW4IunxIk8Bj/MLDS-4.0?node-id=40004270-11444",
     },
   },
-  render: (args) => <FullHeader {...withTypeDemo(args)} />,
+  render: (args) => <FullHeaderDemo {...args} />,
 } satisfies Meta<typeof FullHeader>;
 
 export default meta;

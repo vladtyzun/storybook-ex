@@ -126,3 +126,25 @@
   line-height: var(--line-height-body-large);
   letter-spacing: var(--letter-spacing-body);
 }
+
+.searchValue {
+  flex: 1;
+  font-family: var(--font-family-primary);
+  font-size: var(--font-size-body-large);
+  font-weight: var(--weight-regular);
+  line-height: var(--line-height-body-large);
+  letter-spacing: var(--letter-spacing-body);
+  color: var(--content-typography-content-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.searchClear {
+  margin-left: auto;
+}
+
+.field[data-state="active"] .searchText,
+.field[data-state="default"] .searchText {
+  flex: 1;
+}

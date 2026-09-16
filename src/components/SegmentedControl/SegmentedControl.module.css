@@ -27,13 +27,34 @@
   letter-spacing: var(--letter-spacing-label);
 }
 
+.segment:hover:not(:disabled):not(.active):not(.hover),
+.hover {
+  background: var(--overlay-overlay-hover-state);
+}
+
 .active {
   background: var(--background-main-background-primary);
   box-shadow:
     0 var(--spacing-2) var(--spacing-4) 0 var(--neutrals-transparent-light-4),
-    0 var(--spacing-8) var(--spacing-8) 0 var(--neutrals-transparent-light-4);
+    0 var(--spacing-8) var(--spacing-8) 0 var(--neutrals-transparent-light-4),
+    0 var(--spacing-20) var(--spacing-12) 0 var(--neutrals-transparent-light-4),
+    0 var(--spacing-32) var(--spacing-12) 0 var(--neutrals-transparent-light-4);
+}
+
+.segment:disabled,
+.disabled {
+  cursor: not-allowed;
+  color: var(--content-typography-content-disabled);
+  background: transparent;
+  box-shadow: none;
 }
 
 .label {
   padding: 0 var(--spacing-4);
+}
+
+.icon {
+  flex-shrink: 0;
+  width: var(--spacing-20);
+  height: var(--spacing-20);
 }

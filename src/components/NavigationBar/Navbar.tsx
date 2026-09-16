@@ -16,6 +16,9 @@ export type NavbarVariant =
   | "search"
   | "media";
 
+/** Figma Search Field 4.0 `State`. */
+export type NavbarSearchState = "default" | "active" | "typing" | "labels";
+
 export interface NavbarTab {
   id: string;
   label: string;
@@ -40,7 +43,7 @@ export interface NavbarProps {
   showLeftIcon?: boolean;
   showBack?: boolean;
   onBack?: () => void;
-  /** Figma `Left icon` instance swap. */
+  /** Figma `Left icon` instance swap — composed as Button. */
   leftIcon?: ReactNode;
   /** Figma `Show Menu` (Main Page). */
   showMenu?: boolean;
@@ -57,6 +60,9 @@ export interface NavbarProps {
   iconButton1?: ReactNode;
   iconButton2?: ReactNode;
   iconButton3?: ReactNode;
+  /** Media type: Figma nested `Button 1` / `Button 2` slots. */
+  mediaButton1?: ReactNode;
+  mediaButton2?: ReactNode;
   /** Photo URL for User variant Avatar (optional; presets used when omitted). */
   avatarSrc?: string;
   avatarAlt?: string;
@@ -64,7 +70,12 @@ export interface NavbarProps {
   avatarType?: AvatarType;
   leading?: ReactNode;
   trailing?: ReactNode;
+  /** Figma Search Field `Placeholder`. */
   searchPlaceholder?: string;
+  /** Figma Search Field `State`. */
+  searchState?: NavbarSearchState;
+  /** Figma Search Field `Search Text` (Typing / Labels). */
+  searchText?: string;
   className?: string;
 }
 
@@ -89,12 +100,16 @@ export function Navbar({
   iconButton1,
   iconButton2,
   iconButton3,
+  mediaButton1,
+  mediaButton2,
   avatarSrc,
   avatarAlt = "",
   avatarType = "Female_Caucasian_40px",
   leading,
   trailing,
   searchPlaceholder = "Type to search...",
+  searchState = "default",
+  searchText = "Typing text",
   className = "",
 }: NavbarProps) {
   const layout = variant ?? (titleAlign === "center" ? "title" : "main");
@@ -128,9 +143,18 @@ export function Navbar({
   const builtInTrailing = (() => {
     if (trailing !== undefined) return trailing;
     const items: ReactNode[] = [];
-    if (showIconButton3 && iconButton3) items.push(iconButton3);
-    if (showIconButton2 && iconButton2) items.push(iconButton2);
-    if (iconButton1) items.push(iconButton1);
+    if (layout === "main") {
+      if (showIconButton3 && iconButton3) items.push(iconButton3);
+      if (showIconButton2 && iconButton2) items.push(iconButton2);
+      if (iconButton1) items.push(iconButton1);
+    } else if (layout === "icon") {
+      if (showIconButton2 && iconButton2) items.push(iconButton2);
+      if (iconButton1) items.push(iconButton1);
+    } else {
+      if (showIconButton3 && iconButton3) items.push(iconButton3);
+      if (showIconButton2 && iconButton2) items.push(iconButton2);
+      if (iconButton1) items.push(iconButton1);
+    }
     return items.length ? <>{items}</> : null;
   })();
 
@@ -150,23 +174,46 @@ export function Navbar({
     <div className={[styles.bar, styles[layout], className].filter(Boolean).join(" ")}>
       {layout === "media" ? (
         <>
-          {back}
-          {builtInTrailing}
+          {mediaButton1 ?? (
+            <Button
+              type="media"
+              size="medium"
+              iconOnly
+              leadingIcon={leftIcon ?? <Icon name="arrowLeft" />}
+              aria-label="Back"
+              onClick={onBack}
+            />
+          )}
+          {mediaButton2 ?? builtInTrailing}
         </>
       ) : layout === "search" ? (
         <>
           <div className={styles.left}>{back}</div>
-          <label className={styles.field}>
+          <label className={styles.field} data-state={searchState}>
             <IconSearch />
-            <span className={styles.searchText}>{searchPlaceholder}</span>
+            {searchState === "default" || searchState === "active" ? (
+              <span className={styles.searchText}>{searchPlaceholder}</span>
+            ) : (
+              <span className={styles.searchValue}>{searchText}</span>
+            )}
+            {(searchState === "active" || searchState === "typing" || searchState === "labels") && (
+              <Button
+                type="transparent"
+                size="small"
+                iconOnly
+                leadingIcon={<Icon name="closeCircle" />}
+                aria-label="Clear search"
+                className={styles.searchClear}
+              />
+            )}
           </label>
         </>
       ) : (
         <>
           <div className={styles.left}>
-            {back}
-            {menu}
-            {(layout === "user" || avatarSrc) && (
+            {layout !== "main" && back}
+            {layout === "main" && menu}
+            {layout === "user" && (
               <Avatar
                 className={styles.avatar}
                 size="Large - 40"

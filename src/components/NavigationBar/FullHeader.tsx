@@ -7,8 +7,8 @@ import { StatusBar } from "./StatusBar";
 import styles from "./FullHeader.module.css";
 
 export type HeaderTitleMode = "navbar-start" | "navbar-center" | "page" | "hero";
-/** Figma Full Header `Type`: Default / Product / MLOne Membership. */
-export type FullHeaderType = "default" | "product" | "mlone";
+/** Figma Full Header `Type`: Default / Product. */
+export type FullHeaderType = "default" | "product";
 
 export interface HeaderHero {
   label: string;
@@ -132,7 +132,7 @@ export function FullHeader({
       data-scrolled={scrolled ? "true" : "false"}
       data-type={type}
     >
-      {showStatusBar && <StatusBar inverted={type === "mlone"} />}
+      {showStatusBar && <StatusBar />}
       <Navbar
         {...navbar}
         showLeftIcon={showLeftIcon}
@@ -152,7 +152,6 @@ export function FullHeader({
         <div className={[styles.collapsible, collapsed && styles.collapsed].filter(Boolean).join(" ")}>
           <PageTitle
             variant={pageVariant}
-            inverted={type === "mlone"}
             title={title}
             subtext={copy}
             showSubtext={showSubtext}

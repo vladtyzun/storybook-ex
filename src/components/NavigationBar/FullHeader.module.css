@@ -12,14 +12,6 @@
     var(--background-main-background-primary);
 }
 
-.header[data-type="mlone"] {
-  background:
-    radial-gradient(circle at 0% 0%, var(--teal-a40) 6%, transparent 55%),
-    radial-gradient(circle at 100% 0%, var(--blue-a50) 0%, transparent 50%),
-    var(--background-main-background-black);
-  color: var(--content-typography-content-primary-alt);
-}
-
 .navFlush {
   background: transparent;
 }
@@ -30,15 +22,6 @@
 
 .tabs {
   margin: var(--spacing-8) var(--spacing-20) var(--spacing-16);
-}
-
-.header[data-type="mlone"] .tabs :global(button) {
-  color: var(--content-typography-content-primary-alt);
-}
-
-.header[data-type="mlone"] .tabs :global(button[aria-selected="true"]) {
-  background: var(--background-main-background-primary);
-  color: var(--content-typography-content-primary);
 }
 
 .collapsible {

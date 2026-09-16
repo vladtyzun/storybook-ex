@@ -1,0 +1,26 @@
+---
+description: After deleting or changing stories, keep Storybook working — no missing-story errors.
+alwaysApply: true
+---
+
+# Storybook integrity after deletes/renames
+
+Never leave Storybook pointing at a story that no longer exists. Do not report the task done while the UI shows a missing-story error (e.g. `Couldn't find story matching 'example-header--docs'`).
+
+## After deleting or renaming stories, components, or files
+
+1. Grep the repo (exclude `node_modules`) for leftover **story IDs**, **titles**, and **URLs**. Examples: `example-header--docs`, `Example/Header`, `Example/Button`, `Example/Page`, `Configure.mdx`, `src/stories`.
+2. Check `.storybook/*` (`main.ts`, `preview`, `manager`), `package.json` scripts (`--initial-path`), `.claude/launch.json`, README, CLAUDE.md, chromatic/tests, and any hardcoded `/?path=` links.
+3. Confirm the **default/open story** (`--initial-path`, first sorted story, manager fallback) still exists in live `index.json`. Never leave it on a deleted ID.
+
+## After any Storybook-related change
+
+- Verify live `http://localhost:6006/index.json` (and the sidebar): every previously linked story still exists **or** every reference was updated.
+- Start Storybook with `preview_start` `{name: "storybook"}` from `.claude/launch.json` if it is not running — do not invent a different port.
+- Call MCP `preview-stories` and `run-story-tests` (not `npm test`) before considering the task done.
+- Open the UI (or the missing-story URL) and confirm there is no missing-story error.
+
+```text
+❌ BAD: delete Example/Header, leave last URL /?path=/docs/example-header--docs
+✅ GOOD: grep leftovers, set --initial-path to a live ID (e.g. /docs/design-system-button--docs), verify index.json + UI
+```
